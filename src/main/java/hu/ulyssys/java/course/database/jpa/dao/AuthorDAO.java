@@ -2,42 +2,16 @@ package hu.ulyssys.java.course.database.jpa.dao;
 
 import hu.ulyssys.java.course.database.jpa.entity.Author;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
-import javax.persistence.TypedQuery;
 import java.util.List;
 
-public class AuthorDAO {
+public interface AuthorDAO {
 
-    private static final String PERSISNTENCE_UNIT = "TestPersistence";
+    void save(Author author);
 
-    private EntityManager createEntityManager(){
-        return Persistence.createEntityManagerFactory(PERSISNTENCE_UNIT).createEntityManager();
-    }
-    public void save(Author author){
-        EntityManager entityManager = createEntityManager();
-        entityManager.getTransaction().begin();
-        entityManager.persist(author);
-        entityManager.getTransaction().commit();
-        entityManager.close();
-    }
+    void update(Author author);
 
-    public void update(Author author){
-        EntityManager entityManager = createEntityManager();
-        entityManager.getTransaction().begin();
-        entityManager.merge(author);
-        entityManager.getTransaction().commit();
-        entityManager.close();
-    }
+    List<Author> findAll();
 
-    public List<Author> findAll(){
-        TypedQuery<Author> typedQuery = createEntityManager().createQuery("select n from Author n", Author.class);
-        return typedQuery.getResultList();
-    }
+    List<Author> findByUserName(String userName);
 
-    public List<Author> findByUserName(String userName) {
-        TypedQuery<Author> query = createEntityManager().createQuery("select n from Author n where n.userName=:name", Author.class);
-        query.setParameter("name", userName);
-        return query.getResultList();
-    }
 }
