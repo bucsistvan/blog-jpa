@@ -17,6 +17,7 @@ public class BlogPost {
     @Column(name = "content")
     private String content;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "category")
     private Category category;
 

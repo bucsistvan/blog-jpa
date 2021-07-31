@@ -27,7 +27,7 @@ public class Main {
         BlogPostDAO blogPostDAO = new BlogPostDAO();
         BlogPost blogPost = new BlogPost();
         blogPost.setTitle("Felhők tánca");
-        blogPost.setCategory(Category.valueOf("JAVA"));
+        blogPost.setCategory(Category.JAVA);
         blogPost.setContent("ascacascascdvsdasasc");
         blogPost.setCreatedDate(new Date(System.currentTimeMillis()));
         blogPost.setLastModifiedDate(new Date(System.currentTimeMillis()));
