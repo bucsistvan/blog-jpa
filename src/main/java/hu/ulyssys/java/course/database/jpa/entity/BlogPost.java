@@ -1,15 +1,32 @@
 package hu.ulyssys.java.course.database.jpa.entity;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table
 public class BlogPost {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "title")
     private String title;
+
+    @Column(name = "content")
     private String content;
+
+    @Column(name = "category")
     private Category category;
+
+    @Column(name = "created_date")
     private Date createdDate;
+
+    @Column(name = "last_modified_date")
     private Date lastModifiedDate;
+
+    @Column(name = "published_date")
     private Date publishedDate;
 
     public Long getId() {
